@@ -1,0 +1,28 @@
+{
+  "image": "image.jpg",
+  "name": "Putri Lestari",
+  "angkatan": 20,
+  "prodi": "Computer Science",
+  "noHp": "123456789",
+  "alamat": "123 Main Street, City",
+  "totalInfak": 0,
+  "keterangan": ""
+}
+
+
+{
+    "tanggal":"2023-03-01",
+    "idAlumni":1,
+    "idRekening":2,
+    "jumlahInfak":100000
+}
+
+{
+    "username":"putri@gmail.com",
+    "passwordd":"12345"
+}
+
+{
+    "nama":"BCA",
+    "saldo":"0"
+}
