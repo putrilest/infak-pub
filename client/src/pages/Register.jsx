@@ -71,7 +71,9 @@ export default function Register() {
               className="w-1/2 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"            >
               Register
             </button>
-            <button className="bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300 focus:outline-none px-9"><Link to="/login">Batal</Link></button>
+            <button className="bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300 focus:outline-none px-9">
+              <Link to="/login">Batal</Link>
+            </button>
           </div>
         </form>
       </div>

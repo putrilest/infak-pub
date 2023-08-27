@@ -63,11 +63,11 @@ router.use((req, res, next) => {
       next();
       } catch {
       res.status(401);
-      res.send("Token invalid");
+      res.json({ error: 'Token invalid' });
     }
   } else {
-    res.status(401);
-    res.send("Empty Token");
+    res.status(403);
+    res.json({ error: 'Empty Token' });
   }
 });
 

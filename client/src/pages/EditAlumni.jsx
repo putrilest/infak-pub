@@ -1,39 +1,31 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams, useOutletContext } from "react-router-dom";
 import { api } from "../utils";
 
 export default function EditAlumni() {
   const [alumni, setAlumni] = useState();
   const { id } = useParams();
   const navigate = useNavigate();
+  const user = useOutletContext()[0];
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/alumni/${id}`)
-      .then((response) => response.json())
-      .then((planet) => setAlumni(planet));
+    api(`/alumni/${id}`).then((alumniData) => setAlumni(alumniData));
   }, [id]);
-
-  return (
-    <main>
+  
+  if(user){
+    return (
+      <main>
       {alumni ? (
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            const message = await api(`/planets/${alumni.id}`, "PUT", alumni);
+            const message = await api(`/alumni/${alumni.id}`, "PUT", alumni);
             alert(message);
             navigate("/");
           }}
         >
           <h1>Edit Data Alumni</h1>
-          <label>
-            Nama:
-            <input
-              type="text"
-              value={alumni.nama}
-              onChange={(e) => setAlumni({ ...alumni, nama: e.target.value })}
-            />
-          </label>
           <label>
             Foto:
             <input
@@ -42,6 +34,15 @@ export default function EditAlumni() {
               onChange={(e) => setAlumni({ ...alumni, gambar: e.target.value })}
             />
           </label>
+          <label>
+            Nama:
+            <input
+              type="text"
+              value={alumni.nama}
+              onChange={(e) => setAlumni({ ...alumni, nama: e.target.value })}
+            />
+          </label>
+
           <label>
             Angkatan:
             <input
@@ -88,11 +89,14 @@ export default function EditAlumni() {
             />
           </label>
           
-          <button>Simpan</button>
+          <button type="submit">Simpan</button>
         </form>
       ) : (
         "Loading..."
       )}
     </main>
   );
+}else{
+  return <Navigate to="/login" />;
+}
 }

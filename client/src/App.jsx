@@ -16,7 +16,6 @@ export default function App() {
 
   return (
     <>
-      
       <Outlet context={[user, setUser]} />
       {/* <Footer/> */}
     </>

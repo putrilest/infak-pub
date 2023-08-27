@@ -48,33 +48,14 @@ const Sidebar = () => {
           </button>
           {/* <h1 className="text-2xl text-black font-semibold mb-4">Sidebar</h1> */}
           <nav className={`${isSidebarOpen ? 'block' : 'hidden'} md:block`}>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-blue-500 hover:text-blue-600">
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:text-blue-600">
-                  Tambah Alumni
-                </a>
-              </li>
-              {/* <li>
-                <a href="#" className="text-blue-500 hover:text-blue-600">
-                  Data Alumni
-                </a>
-              </li> */}
+            <ul className="space-y-2 flex flex-col gap-2">
+              <Link to="/">Dashboard</Link>
               <Link to="/alumni">Data Alumni</Link>
-              <li>
-                <a href="#" className="text-blue-500 hover:text-blue-600">
-                  Tambah Infak
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-500 hover:text-blue-600">
-                  Data Infak
-                </a>
-              </li>
+              <Link to="/addAlumni">Tambah Alumni</Link>
+              <Link to="/infak">Data Infak</Link>
+              <Link to="/addInfak">Tambah Infak</Link>
+              <Link to="/rekening">Data Rekening</Link>
+              <Link to="/addRekening">Tambah Rekening</Link>
             </ul>
           </nav>
         </div>
