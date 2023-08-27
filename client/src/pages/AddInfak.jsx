@@ -1,5 +1,6 @@
 import { useNavigate, useOutletContext, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Select from "react-select";
 import { api } from "../utils";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
@@ -8,10 +9,23 @@ export default function AddInfak(){
     const navigate = useNavigate();
     const [infaks, setInfaks] = useState([]);
     const [newInfak, setNewInfak] = useState({});
+    const [rekeningList, setRekeningList] = useState([]);
+    const [alumniOptions, setAlumniOptions] = useState([]);
+    const [selectAlumni, setSelectAlumni] = useState();
     const user = useOutletContext()[0];
   
     useEffect(() => {
       api("/infak").then((infaks) => setInfaks(infaks));
+      api("/rekening").then((rek) => {
+        setRekeningList(rek);
+      });
+      api("/alumni").then((alumniData) => {
+        const options = alumniData.map((alumni) => ({
+          value: alumni.id,
+          label: alumni.nama,
+        }));
+        setAlumniOptions(options);
+      });
     }, [user, navigate]);
 
     if(user){
@@ -43,7 +57,7 @@ export default function AddInfak(){
                   />
                 </label>
 
-                <label>
+                {/* <label>
                   Id Alumni
                   <input
                   className="w-full border rounded py-2 px-3 my-2"
@@ -54,9 +68,40 @@ export default function AddInfak(){
                   }
                   required
                   />
+                </label> */}
+
+                <label>
+                  Nama Alumni
+                  <Select
+                    options={alumniOptions}
+                    value={selectAlumni}
+                    onChange={(selectedOption) => {
+                      setSelectAlumni(selectedOption);
+                      setNewInfak({ ...newInfak, idAlumni: selectedOption.value });
+                    }}
+                  />
                 </label>
 
                 <label>
+                  Rekening
+                  <select
+                    className="w-full border rounded py-2 px-3 my-2"
+                    value={newInfak.idRekening ?? ""}
+                    onChange={(e) =>
+                      setNewInfak({ ...newInfak, idRekening: e.target.value })
+                    }
+                    required
+                  >
+                    <option value="" disabled>-- Pilih Rekening --</option>
+                    {rekeningList.map((rek) => (
+                      <option key={rek.id} value={rek.id}>
+                        {rek.nama}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                {/* <label>
                   Id Rekening
                   <input
                   className="w-full border rounded py-2 px-3 my-2"
@@ -67,7 +112,7 @@ export default function AddInfak(){
                   }
                   required
                   />
-                </label>
+                </label> */}
 
                 <label>
                   Jumlah Infak

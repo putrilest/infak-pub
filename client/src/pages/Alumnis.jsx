@@ -9,12 +9,13 @@ const Alumnis = () => {
   const [alumni, setAlumni] = useState([]);
   const user = useOutletContext()[0];
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
       api("/alumni").then((alumni) => setAlumni(alumni));
     }, [user]);
 
-    const filteredAlumni = alumni.filter((alumnus) =>
+    const sortedFilteredAlumni = alumni.filter((alumnus) =>
     alumnus.nama.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -47,7 +48,8 @@ const Alumnis = () => {
                           </tr>
                       </thead>
                       <tbody className="border-collapse border border-slate-400 p-4">
-                      {filteredAlumni
+                      {sortedFilteredAlumni
+                      .filter((_alumni, index) => index >= page * 5 - 5 && index < page * 5)
                       .map((alumni,index) => (
                         <tr key={alumni.id} className={index % 2 === 0 ? "bg-white " : "bg-gray-100"}>
                           <td className="px-4">{alumni.nama}</td>
@@ -81,6 +83,21 @@ const Alumnis = () => {
                       }
                       </tbody>
                   </table>
+                  <div className="flex flex-row gap-2 mt-4">
+                    <button 
+                      className="w-1/4 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300" 
+                      onClick={() => setPage(page - 1)} disabled={page === 1}>
+                      Sebelumnya
+                    </button>
+                    {page}
+                    <button
+                      className="w-1/4 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+                      onClick={() => setPage(page + 1)}
+                      disabled={page === Math.ceil(sortedFilteredAlumni.length / 5)}
+                    >
+                      Selanjutnya
+                    </button>
+                  </div>
                 </div>
             </div>
           </div>
