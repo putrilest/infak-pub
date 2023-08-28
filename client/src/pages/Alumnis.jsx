@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import {api} from "../utils.js";
 import {Link, Navigate, useOutletContext } from "react-router-dom";
-import {AiFillEdit, AiFillDelete} from "react-icons/ai"
+import {AiFillEdit, AiFillDelete} from "react-icons/ai";
+import {BiDetail} from "react-icons/bi";
 import Header from "../components/Header.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 
@@ -10,14 +11,24 @@ const Alumnis = () => {
   const user = useOutletContext()[0];
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState("id");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
       api("/alumni").then((alumni) => setAlumni(alumni));
     }, [user]);
 
-    const sortedFilteredAlumni = alumni.filter((alumnus) =>
-    alumnus.nama.toLowerCase().includes(search.toLowerCase())
-  );
+    const sortedFilteredAlumni = alumni
+    .filter((alumnus) =>
+      alumnus.nama.toLowerCase().includes(search.toLowerCase())
+    )
+    .toSorted((a,b) => {
+      if (sortOrder === "asc") {
+        return a[sortBy] < b[sortBy] ? -1 : 1;
+      } else {
+        return a[sortBy] > b[sortBy] ? -1 : 1;
+      }
+    });
 
   if(user){
       return (
@@ -27,14 +38,36 @@ const Alumnis = () => {
             <Sidebar/>
             <div className="ml-36 mt-16">
                 <h1 className="text-3xl font-bold pb-4">Data Almuni</h1>
-                <div className="mb-4">
-                  <input
-                    type="text"
-                    placeholder="Cari berdasarkan nama..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="border p-2 rounded"
-                  />
+                <div className="flex flex-row gap-4 text-center items-center">
+                  <div className="mb-4">
+                    <input
+                      type="text"
+                      placeholder="Cari berdasarkan nama..."
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      className="border p-2 rounded"
+                    />
+                  </div>
+                  <label className="text-lg font-semibold mb-2 flex">
+                    <h2 className="text-sm pt-2">Urutkan : </h2>
+                    <div className="flex gap-4 items-center">
+                      <select
+                        className="border rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                        onChange={(e) => setSortBy(e.target.value)}
+                      >
+                        <option value="id">Normal</option>
+                        <option value="nama">Nama</option>
+                        <option value="angkatan">Angkatan</option>
+                      </select>
+                      <select
+                        className="border rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+                        onChange={(e) => setSortOrder(e.target.value)}
+                      >
+                        <option value="asc">Naik</option>
+                        <option value="desc">Turun</option>
+                      </select>
+                    </div>
+                  </label>
                 </div>
                 <div className="max-h-[15rem]">
                   <table className="border-collapse border border-slate-400 p-2">
@@ -75,7 +108,7 @@ const Alumnis = () => {
                               <AiFillDelete/>
                             </button>
                             <Link to={`/alumni/${alumni.id}`}>
-                              <button>Detail</button>
+                              <BiDetail/>
                             </Link>
                           </td>
                         </tr>

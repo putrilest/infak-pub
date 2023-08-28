@@ -70,7 +70,7 @@ export default function AddAlumni(){
                     <label>
                       Prodi
                       <input
-                      className="w-full border rounded py-2 px- my-2"
+                      className="w-full border rounded py-2 px-3 my-2"
                       type="text"
                       value={newAlumni.prodi ?? ""}
                       onChange={(e) =>
@@ -105,8 +105,6 @@ export default function AddAlumni(){
                           })
                       }
                       required
-                      // cols={16}
-                      // rows={8}
                       />
                     </label>
                     <label>
