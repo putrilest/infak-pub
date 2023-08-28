@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {api} from "../utils.js"
+import {api} from "../utils.js";
 import {Link, Navigate, useOutletContext } from "react-router-dom";
 import {AiFillEdit, AiFillDelete} from "react-icons/ai"
 import Header from "../components/Header.jsx";
@@ -25,7 +25,7 @@ const Alumnis = () => {
           <Header/>
           <div className="flex">
             <Sidebar/>
-            <div className="ml-36 mt-24 ">
+            <div className="ml-36 mt-16">
                 <h1 className="text-3xl font-bold pb-4">Data Almuni</h1>
                 <div className="mb-4">
                   <input
@@ -36,7 +36,7 @@ const Alumnis = () => {
                     className="border p-2 rounded"
                   />
                 </div>
-                <div className="overflow-y-auto max-h-[15rem]">
+                <div className="max-h-[15rem]">
                   <table className="border-collapse border border-slate-400 p-2">
                       <thead className="bg-blue-900 text-white sticky top-0">
                           <tr className="border border-slate-300">
@@ -49,7 +49,7 @@ const Alumnis = () => {
                       </thead>
                       <tbody className="border-collapse border border-slate-400 p-4">
                       {sortedFilteredAlumni
-                      .filter((_alumni, index) => index >= page * 5 - 5 && index < page * 5)
+                      .filter((_alumni, index) => index >= page * 10 - 10 && index < page * 10)
                       .map((alumni,index) => (
                         <tr key={alumni.id} className={index % 2 === 0 ? "bg-white " : "bg-gray-100"}>
                           <td className="px-4">{alumni.nama}</td>
@@ -93,7 +93,7 @@ const Alumnis = () => {
                     <button
                       className="w-1/4 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
                       onClick={() => setPage(page + 1)}
-                      disabled={page === Math.ceil(sortedFilteredAlumni.length / 5)}
+                      disabled={page === Math.ceil(sortedFilteredAlumni.length / 10)}
                     >
                       Selanjutnya
                     </button>

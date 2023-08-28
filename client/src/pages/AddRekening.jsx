@@ -20,7 +20,7 @@ export default function AddInfak(){
             <Header/>
             <div className="flex">
               <Sidebar/>
-              <form className="bg-white p-8 rounded shadow-md max-w-md ml-36 mt-24"
+              <form className="bg-white p-8 rounded shadow-md max-w-md ml-28 mt-12 h-full"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setNewRekening({});

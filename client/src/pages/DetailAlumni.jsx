@@ -15,7 +15,7 @@ export default function DetailAlumni() {
     <main>
       {alumni ? (
         <>
-          <h1>{alumni.gambar}</h1>
+          <img src={alumni.gambar}/>
           <p>{alumni.nama}</p>
           <p>{alumni.angkatan}</p>
           <p>{alumni.prodi}</p>

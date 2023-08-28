@@ -34,7 +34,7 @@ export default function AddInfak(){
             <Header/>
             <div className="flex">
               <Sidebar/>
-              <form className="bg-white p-8 rounded shadow-md max-w-md ml-36 mt-24"
+              <form className="bg-white p-8 rounded shadow-md max-w-md ml-24 mt-12 h-full mb-8"
                 onSubmit={async (e) => {
                   e.preventDefault();
                   setNewInfak({});
@@ -56,19 +56,6 @@ export default function AddInfak(){
                   required
                   />
                 </label>
-
-                {/* <label>
-                  Id Alumni
-                  <input
-                  className="w-full border rounded py-2 px-3 my-2"
-                  type="number"
-                  value={newInfak.idAlumni ?? ""}
-                  onChange={(e) =>
-                      setNewInfak({ ...newInfak, idAlumni: e.target.value })
-                  }
-                  required
-                  />
-                </label> */}
 
                 <label>
                   Nama Alumni
@@ -100,19 +87,6 @@ export default function AddInfak(){
                     ))}
                   </select>
                 </label>
-
-                {/* <label>
-                  Id Rekening
-                  <input
-                  className="w-full border rounded py-2 px-3 my-2"
-                  type="number"
-                  value={newInfak.idRekening ?? ""}
-                  onChange={(e) =>
-                      setNewInfak({ ...newInfak, idRekening: e.target.value })
-                  }
-                  required
-                  />
-                </label> */}
 
                 <label>
                   Jumlah Infak

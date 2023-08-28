@@ -7,11 +7,12 @@ const router = express.Router();
 router.post("/", async (req, res) => {
     try {
       const tanggal = new Date(req.body.tanggal);
+      const formattedTanggal = tanggal.toISOString().split('T')[0];
       const prepare = await conn.prepare(
         "INSERT INTO infaks (tanggal, idAlumni, idRekening, jumlahInfak) VALUES (?, ?, ?, ?)"
       );
       await prepare.execute([
-        tanggal,
+        formattedTanggal,
         req.body.idAlumni,
         req.body.idRekening,
         req.body.jumlahInfak,

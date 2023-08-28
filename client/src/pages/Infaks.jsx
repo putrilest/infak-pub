@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {api} from "../utils.js"
 import { Link, Navigate, useOutletContext } from "react-router-dom";
 import {AiFillEdit, AiFillDelete} from "react-icons/ai"
+import {format} from "date-fns";
 import Header from "../components/Header.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 
@@ -37,7 +38,7 @@ const Infaks = () => {
                       {infaks
                       .map((infak,index) => (
                         <tr key={infaks.id} className={index % 2 === 0 ? "bg-white " : "bg-gray-100"}>
-                          <td className="px-4">{infak.tanggal}</td>
+                          <td className="px-4">{format(new Date(infak.tanggal), 'yyyy-MM-dd')}</td>
                           <td className="px-14">{infak.idAlumni}</td>
                           <td className="px-14">{infak.idRekening}</td>
                           <td className="px-8">{infak.jumlahInfak.toLocaleString("id-ID", {

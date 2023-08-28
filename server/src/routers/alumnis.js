@@ -6,49 +6,9 @@ import conn from "../db.js";
 const router = express.Router();
 
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './public/images'); // Menentukan folder penyimpanan gambar
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, path.parse(file.originalname).name + "-" + Date.now() + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({ storage:storage });
-// // CREATE
-// router.post("/", upload.single("gambar"), async (req, res) => {
-//     try {
-//       console.log(req.file)
-//       const prepare = await conn.prepare(
-//         "INSERT INTO alumnis (gambar, nama, angkatan, prodi, noHp, alamat, totalInfak, keterangan) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-//       );
-//       await prepare.execute([
-//         req.file.filename,
-//         req.body.name,
-//         req.body.angkatan,
-//         req.body.prodi,
-//         req.body.noHp,
-//         req.body.alamat,
-//         req.body.totalInfak,
-//         req.body.keterangan
-//       ]);
-//       res.send("Succes Create Data");
-//     } catch (error) {
-//       console.error("Error:", error);
-//       res.status(500);
-//       res.send(error);
-//     }
-//   });
-
-
-
-
-
 // CREATE
 router.post("/", async (req, res) => {
     try {
-      console.log(req.file)
       const prepare = await conn.prepare(
         "INSERT INTO alumnis (gambar, nama, angkatan, prodi, noHp, alamat, totalInfak, keterangan) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
       );
