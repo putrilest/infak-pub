@@ -29,7 +29,7 @@ const Dashboard = () => {
           <Sidebar/>
           {rekenings
           .map((rek) => (
-            <div key={rek.id} className="flex flex-col gap-3 bg-white rounded shadow p-4 ml-24 mt-24 h-full">
+            <div key={rek.id} className="flex flex-col gap-3 bg-white rounded shadow p-4 ml-12 mt-24 h-full">
               <h1 className="px-4 font-bold text-2xl">REKENING PUB</h1>
               <p className="px-4">Nama Rekening : {rek.nama}</p>
               <p className="px-4">Nomor Rekening : {rek.nomorRek}</p>
@@ -41,7 +41,7 @@ const Dashboard = () => {
               </p>
             </div>
           ))}
-          <div className="flex flex-col gap-3 bg-white rounded shadow p-4 ml-36 mt-24 h-full">
+          <div className="flex flex-col gap-3 bg-white rounded shadow p-4 ml-12 mt-24 h-full">
             Jumlah Alumni : 
             <div className="font-bold">{totalAlumni} Orang</div>
           </div>

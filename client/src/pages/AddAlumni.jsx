@@ -29,7 +29,7 @@ export default function AddAlumni(){
                   setAlumnis(alumnis);
                   alert(message);
                 }}>
-                <h1 className="text-xl font-semibold mb-8 text-center">Tambah Alumni</h1>
+                <h1 className="text-3xl font-bold mb-8 text-center">Tambah Alumni</h1>
                 <div className="flex flex-row gap-20">
                   <div>
                     <label>

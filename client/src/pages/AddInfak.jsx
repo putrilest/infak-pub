@@ -43,7 +43,7 @@ export default function AddInfak(){
                   setInfaks(infaks);
                   alert(message);
                 }}>
-                <h1 className="text-xl font-semibold mb-4 text-center">Tambah Infak</h1>
+                <h1 className="text-3xl font-semibold mb-8 text-center">Tambah Infak</h1>
                 <label>
                   Tanggal :
                   <input

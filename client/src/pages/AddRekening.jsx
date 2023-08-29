@@ -29,7 +29,7 @@ export default function AddInfak(){
                   setRekenings(infaks);
                   alert(message);
                 }}>
-                <h1 className="text-xl font-semibold mb-4 text-center">Tambah Rekening</h1>
+                <h1 className="text-3xl font-semibold mb-4 text-center pb-4">Tambah Rekening</h1>
                 <label>
                   Nama Rekening :
                   <input

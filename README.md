@@ -1,7 +1,7 @@
 # Infak PUB
 Program ini adalah program sederhana yang digunakan untuk memenuhi tugas akhir pelatihan React Js. 
 
-Program ini dibuat untuk mencatat data infak beasiswa PUB (Pemberdayaan Umat Berkelanjutan), dengan tujuan memudahkan tugas bendahara khusunya bendahara eksternal serta memudahkan alumni untuk melihat informasi infaknya.
+Fungsi program ini adalah untuk mencatat data infak beasiswa PUB (Pemberdayaan Umat Berkelanjutan), dengan tujuan memudahkan tugas bendahara khusunya bendahara eksternal serta memudahkan alumni untuk melihat informasi infaknya.
 
 ## Fitur
 Untuk User (Alumni Beasiswa PUB):
