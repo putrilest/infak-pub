@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   if(user){
     return (
-      <div>
+      <div className="cursor-pointer">
         <Header/>
         <div className="flex">
           <Sidebar/>
