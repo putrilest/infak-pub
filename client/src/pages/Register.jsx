@@ -29,7 +29,7 @@ export default function Register() {
   return (
     <main className="bg-blue-100 min-h-screen flex items-center justify-center flex-col">
       <div className="flex items-center mb-6 text-center">
-          <img src="logo-pub.png" className="w-16 h-16 mr-2 tablet:w-12 tablet:h-12 mobile:w-10 mobile:h-10"/>
+          <img src="https://pubpasim.org/imgs/pub-logo.png" className="w-16 h-16 mr-2 tablet:w-12 tablet:h-12 mobile:w-10 mobile:h-10"/>
           <h1 className="text-6xl font-semibold font-verdana text-blue-600 tablet:text-5xl  mobile:text-4xl">PUB</h1>
       </div> 
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-md  tablet:max-w-sm mobile:max-w-xs">

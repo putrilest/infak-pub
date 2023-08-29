@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import conn from "./db.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import "dotenv/config";
 import alumnisRouter from "./routers/alumnis.js";
 import infaksRouter from "./routers/infaks.js";
@@ -20,12 +21,13 @@ const router = express.Router();
 //CREATE
 router.post("/register", async (req, res) => {
   try {
+    const hashedPassword = await bcrypt.hash(req.body.passwordd, 10);
     const prepare = await conn.prepare(
       "INSERT INTO users (username, passwordd) VALUES (?, ?)"
     );
     await prepare.execute([
       req.body.username,
-      req.body.passwordd,
+      hashedPassword,
     ]);
     res.send("Succes Create Account");
   } catch (error) {
@@ -38,7 +40,8 @@ router.post("/login", async (req, res) => {
   const prepare = await conn.prepare("SELECT * FROM users WHERE username = ?");
   const user = (await prepare.execute([req.body.username]))[0];
   if (user) {
-    if (req.body.passwordd === user.passwordd) {
+    const passworddMatch = await bcrypt.compare(req.body.passwordd, user.passwordd);
+    if (passworddMatch) {
       res.json({
         token: jwt.sign(user, process.env.SECRET_KEY),
         user,
