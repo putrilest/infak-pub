@@ -45,7 +45,7 @@ INSERT INTO rekenings (nama, nomorRek, saldo)VALUES
  ('MANDIRI','132-00-1075813-5',0);
 
 INSERT INTO alumnis (gambar, nama, angkatan, prodi, noHp, alamat, totalInfak, keterangan) VALUES
- ('ghttps://i.pinimg.com/originals/24/8e/74/248e74a52c9f66645f121c5c3ac5498c.jpg', 'Amelia Siregar', 20, 'S1 Akuntansi', '081234567890', 'Jl. Dakota No 8A, Sukaraja, Cicendo, Kota Bandung', 0,'Belum Bekerja'),
+ ('https://i.pinimg.com/originals/24/8e/74/248e74a52c9f66645f121c5c3ac5498c.jpg', 'Amelia Siregar', 20, 'S1 Akuntansi', '081234567890', 'Jl. Dakota No 8A, Sukaraja, Cicendo, Kota Bandung', 0,'Belum Bekerja'),
  ('https://i.pinimg.com/originals/24/8e/74/248e74a52c9f66645f121c5c3ac5498c.jpg', 'Peni Julianti', 20, 'S1 Akuntansi', '081234567890', 'Jl. Dakota No 8A, Sukaraja, Cicendo, Kota Bandung', 0,'Belum Bekerja'),
  ('https://i.pinimg.com/736x/34/f1/28/34f1283cbef767dbf64d67910d9f5750.jpg', 'Dimas Firmansyah', 20, 'S1 Akuntansi', '081234567890', 'Jl. Dakota No 8A, Sukaraja, Cicendo, Kota Bandung', 0,'Belum Bekerja'),
  ('https://i.pinimg.com/originals/24/8e/74/248e74a52c9f66645f121c5c3ac5498c.jpg', 'Kharisma Amalia', 20, 'S1 Akuntansi', '081234567890', 'Jl. Dakota No 8A, Sukaraja, Cicendo, Kota Bandung', 0,'Belum Bekerja'),
