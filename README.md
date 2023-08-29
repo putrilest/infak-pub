@@ -16,7 +16,7 @@ Semua pengguna :
 - Melihat Informasi infak
 
 ## Diagram ER
-
+![erd](ERD.svg "erd program")
 ## Tech stack
 - Frontend : React
 - Backend : Express
